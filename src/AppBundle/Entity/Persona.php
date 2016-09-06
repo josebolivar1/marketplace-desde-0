@@ -31,7 +31,15 @@ class Persona extends BaseUser
     public function __construct()
     {
         parent::__construct();
-        // your own logic
+            $avatars = array(
+                "images/20160906_044209_9ab5d2ca4816f0c00ce453ef1c2dfcf0.png",
+                "images/20160906_045123_6b79dfa172525b676078d4ec48416750",
+                "images/20160906_045348_791b196be1d7b0a27f9e17babd5848a3",
+                );
+        //numero aleatorio para elegir el avatar
+        $indexSel = rand(0, count($avatars) - 1);
+        //Asignacion del avatar aleatorio
+        $this->avatar = $avatars[$indexSel];
     }
 
     /**
