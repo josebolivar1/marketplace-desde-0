@@ -35,11 +35,11 @@ class Trayecto {
     /**
      * @ORM\Column(type="date")
      */
-    protected $fechaPublicacion;
+    protected $fechaDeViaje;
     /**
      * @ORM\Column(type="time")
      */
-    protected $hora;
+    protected $horaDeViaje;
     /**
      * @ORM\Column(type="float")
      */
@@ -52,6 +52,15 @@ class Trayecto {
      * @ORM\Column(type="integer")
      */
     protected $plazas;
+    
+    public function __construct() {
+       $this->fechaDeViaje = new \DateTime();
+       $this->horaDeViaje = new \DateTime();
+    }
+    
+    public function __toString() {
+        return "Viaje de" . $this->Origen() . "a" . $this->Distino();
+    }
 
     /**
      * Get id
@@ -133,49 +142,49 @@ class Trayecto {
     }
 
     /**
-     * Set fechaPublicacion
+     * Set fechaDeViaje
      *
-     * @param \DateTime $fechaPublicacion
+     * @param \DateTime $fechaDeViaje
      * @return Trayecto
      */
-    public function setFechaPublicacion($fechaPublicacion)
+    public function setFechaDeViaje($fechaDeViaje)
     {
-        $this->fechaPublicacion = $fechaPublicacion;
+        $this->fechaDeViaje = $fechaDeViaje;
 
         return $this;
     }
 
     /**
-     * Get fechaPublicacion
+     * Get fechaDeViaje
      *
      * @return \DateTime 
      */
-    public function getFechaPublicacion()
+    public function getFechaDeViaje()
     {
-        return $this->fechaPublicacion;
+        return $this->fechaDeViaje;
     }
 
     /**
-     * Set hora
+     * Set horaDeViaje
      *
-     * @param \DateTime $hora
+     * @param \DateTime $horaDeViaje
      * @return Trayecto
      */
-    public function setHora($hora)
+    public function setHoraDeViaje($horaDeViaje)
     {
-        $this->hora = $hora;
+        $this->horaDeViaje = $horaDeViaje;
 
         return $this;
     }
 
     /**
-     * Get hora
+     * Get horaDeViaje
      *
      * @return \DateTime 
      */
-    public function getHora()
+    public function getHoraDeViaje()
     {
-        return $this->hora;
+        return $this->horaDeViaje;
     }
 
     /**
