@@ -55,4 +55,12 @@ class PublicController extends Controller
             
         ));
     }
+    
+    /**
+    * @Route("/terminos", name="public_terminos")
+    */
+    public function terminosAction()
+    {
+        return $this->render('terminos/index.html.twig');    
+    }
 }
