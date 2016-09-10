@@ -54,6 +54,10 @@ class Trayecto {
      * @ORM\Column(type="integer")
      */
     protected $plazas;
+    /**
+     * @ORM\Column(type="boolean", options={"default" : true})
+     */
+    protected $enabled;
     
     public function __construct() {
        $this->fechaDeViaje = new \DateTime();
@@ -279,5 +283,28 @@ class Trayecto {
     public function getConductor()
     {
         return $this->conductor;
+    }
+
+    /**
+     * Set enabled
+     *
+     * @param boolean $enabled
+     * @return Trayecto
+     */
+    public function setEnabled($enabled)
+    {
+        $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * Get enabled
+     *
+     * @return boolean 
+     */
+    public function getEnabled()
+    {
+        return $this->enabled;
     }
 }
