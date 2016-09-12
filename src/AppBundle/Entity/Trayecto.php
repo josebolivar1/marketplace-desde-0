@@ -55,7 +55,7 @@ class Trayecto {
     /**
      * @ORM\Column(type="integer")
      */
-    protected $plazas;
+    protected $plazasDisponibles;
     /**
      * @ORM\Column(type="boolean", options={"default" : true})
      */
@@ -196,29 +196,6 @@ class Trayecto {
     }
 
     /**
-     * Set plazas
-     *
-     * @param integer $plazas
-     * @return Trayecto
-     */
-    public function setPlazas($plazas)
-    {
-        $this->plazas = $plazas;
-
-        return $this;
-    }
-
-    /**
-     * Get plazas
-     *
-     * @return integer 
-     */
-    public function getPlazas()
-    {
-        return $this->plazas;
-    }
-
-    /**
      * Set enabled
      *
      * @param boolean $enabled
@@ -308,5 +285,28 @@ class Trayecto {
     public function getDestino()
     {
         return $this->destino;
+    }
+
+    /**
+     * Set plazasDisponibles
+     *
+     * @param integer $plazasDisponibles
+     * @return Trayecto
+     */
+    public function setPlazasDisponibles($plazasDisponibles)
+    {
+        $this->plazasDisponibles = $plazasDisponibles;
+
+        return $this;
+    }
+
+    /**
+     * Get plazasDisponibles
+     *
+     * @return integer 
+     */
+    public function getPlazasDisponibles()
+    {
+        return $this->plazasDisponibles;
     }
 }
