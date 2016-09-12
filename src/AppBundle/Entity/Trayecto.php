@@ -22,12 +22,14 @@ class Trayecto {
      * @ORM\JoinColumn(name="persona_id", referencedColumnName="id")
     */
     protected $conductor;
-    /**
-     * @ORM\Column(type="string")
+     /**
+     * @ORM\ManyToOne(targetEntity="Ciudad", inversedBy="trayectosDondeSoyOrigen")
+     * @ORM\JoinColumn(name="origen_id", referencedColumnName="id")
      */
     protected $origen;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\ManyToOne(targetEntity="Ciudad", inversedBy="trayectosDondeSoyDestino")
+     * @ORM\JoinColumn(name="destino_id", referencedColumnName="id")
      */
     protected $destino;
     /**
@@ -76,52 +78,6 @@ class Trayecto {
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set origen
-     *
-     * @param string $origen
-     * @return Trayecto
-     */
-    public function setOrigen($origen)
-    {
-        $this->origen = $origen;
-
-        return $this;
-    }
-
-    /**
-     * Get origen
-     *
-     * @return string 
-     */
-    public function getOrigen()
-    {
-        return $this->origen;
-    }
-
-    /**
-     * Set destino
-     *
-     * @param string $destino
-     * @return Trayecto
-     */
-    public function setDestino($destino)
-    {
-        $this->destino = $destino;
-
-        return $this;
-    }
-
-    /**
-     * Get destino
-     *
-     * @return string 
-     */
-    public function getDestino()
-    {
-        return $this->destino;
     }
 
     /**
@@ -263,6 +219,29 @@ class Trayecto {
     }
 
     /**
+     * Set enabled
+     *
+     * @param boolean $enabled
+     * @return Trayecto
+     */
+    public function setEnabled($enabled)
+    {
+        $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * Get enabled
+     *
+     * @return boolean 
+     */
+    public function getEnabled()
+    {
+        return $this->enabled;
+    }
+
+    /**
      * Set conductor
      *
      * @param \AppBundle\Entity\Persona $conductor
@@ -286,25 +265,48 @@ class Trayecto {
     }
 
     /**
-     * Set enabled
+     * Set origen
      *
-     * @param boolean $enabled
+     * @param \AppBundle\Entity\Ciudad $origen
      * @return Trayecto
      */
-    public function setEnabled($enabled)
+    public function setOrigen(\AppBundle\Entity\Ciudad $origen = null)
     {
-        $this->enabled = $enabled;
+        $this->origen = $origen;
 
         return $this;
     }
 
     /**
-     * Get enabled
+     * Get origen
      *
-     * @return boolean 
+     * @return \AppBundle\Entity\Ciudad 
      */
-    public function getEnabled()
+    public function getOrigen()
     {
-        return $this->enabled;
+        return $this->origen;
+    }
+
+    /**
+     * Set destino
+     *
+     * @param \AppBundle\Entity\Ciudad $destino
+     * @return Trayecto
+     */
+    public function setDestino(\AppBundle\Entity\Ciudad $destino = null)
+    {
+        $this->destino = $destino;
+
+        return $this;
+    }
+
+    /**
+     * Get destino
+     *
+     * @return \AppBundle\Entity\Ciudad 
+     */
+    public function getDestino()
+    {
+        return $this->destino;
     }
 }

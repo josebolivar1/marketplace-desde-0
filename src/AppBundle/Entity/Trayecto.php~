@@ -1,0 +1,72 @@
+<?php
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Knp\DoctrineBehaviors\Model as ORMBehaviors;
+	
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="trayecto")
+*/
+class Trayecto {
+    use ORMBehaviors\Timestampable\Timestampable;
+    /**
+    * @ORM\Column(type="integer")
+    * @ORM\Id
+    * @ORM\GeneratedValue(strategy="IDENTITY")
+    */
+    protected $id;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Persona", inversedBy="trayectos")
+     * @ORM\JoinColumn(name="persona_id", referencedColumnName="id")
+    */
+    protected $conductor;
+     /**
+     * @ORM\ManyToOne(targetEntity="Ciudad", inversedBy="trayectosDondeSoyOrigen")
+     * @ORM\JoinColumn(name="origen_id", referencedColumnName="id")
+     */
+    protected $origen;
+    /**
+     * @ORM\ManyToOne(targetEntity="Ciudad", inversedBy="trayectosDondeSoyDestino")
+     * @ORM\JoinColumn(name="destino_id", referencedColumnName="id")
+     */
+    protected $destino;
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $calle;
+    /**
+     * @ORM\Column(type="date")
+     */
+    protected $fechaDeViaje;
+    /**
+     * @ORM\Column(type="time")
+     */
+    protected $horaDeViaje;
+    /**
+     * @ORM\Column(type="float")
+     */
+    protected $precio;
+    /**
+     * @ORM\Column(type="text")
+     */
+    protected $descripcion;
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $plazas;
+    /**
+     * @ORM\Column(type="boolean", options={"default" : true})
+     */
+    protected $enabled;
+    
+    public function __construct() {
+       $this->fechaDeViaje = new \DateTime();
+       $this->horaDeViaje = new \DateTime();
+    }
+    
+    public function __toString() {
+        return "Viaje de" . $this->Origen() . "a" . $this->Distino();
+    }
+}
