@@ -61,7 +61,7 @@ class PrivateController extends Controller
       $nuevoTrayecto->setHoraDeViaje($horaDateTime);
       $nuevoTrayecto->setPrecio($request->get('precio'));
       $nuevoTrayecto->setDescripcion($request->get('descripcion'));
-      $nuevoTrayecto->setPlazas($request->get('plazas'));
+      $nuevoTrayecto->setPlazasDisponibles($request->get('plazasDisponibles'));
       $usuarioLogueado = $this->getUser();
       $nuevoTrayecto->setConductor($usuarioLogueado);
       
