@@ -1,6 +1,9 @@
 <?php
+
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Persona;
+use AppBundle\Entity\Trayecto;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -82,5 +85,29 @@ class PublicController extends Controller
     public function terminosAction()
     {
         return $this->render('terminos/index.html.twig');    
+    }
+    
+    //ejemplo 1: se insta EntityManager, Repositorio y Find.
+    /**
+     * @Route("/fichaDeUsuario/{idUsuario}", name="public_fichaDeUsuario")
+     */
+    public function fichaDeUsuarioAction($idUsuario) {
+        $em = $this->getDoctrine()->getManager();
+        $repositorioPersona = $em->getRepository("AppBundle:Persona");
+        $persona = $repositorioPersona->find($idUsuario);
+        
+        return $this->render('fichaDeUsuario/index.html.twig', array(
+            'persona' => $persona
+            ));
+    }
+    
+    //ejemplo 2: hay que poner el use AppBundle\Entity\Trayecto , esta es la manera más fácil.
+    /**
+     * @Route("/fichaTrayecto/{trayecto}", name="public_fichaTrayecto")
+     */
+    public function fichaTrayectoAction(Trayecto $trayecto) {
+        return $this->render('fichaTrayecto/index.html.twig', array(
+            'trayecto' => $trayecto
+            ));
     }
 }

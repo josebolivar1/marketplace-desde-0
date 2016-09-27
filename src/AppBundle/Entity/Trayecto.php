@@ -67,7 +67,7 @@ class Trayecto {
     }
     
     public function __toString() {
-        return "Viaje de" . $this->Origen() . "a" . $this->Distino();
+        return " Viaje de " . $this->origen . " a " . $this->getDestino(); //cuaNDO SE BUSCA UNA VARIABLE HAY QUE PONERLA SIN PARENTESIS O CON UN get.
     }
 
     /**

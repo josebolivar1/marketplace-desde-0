@@ -5,11 +5,8 @@
         <div class="container">
             <div class="row clearfix">
                 <div class="col-sm-6 page-sidebar mobile-filter-sidebar">
-                    <h1 class="text-left"> Usuario: {{ persona.username }} </h1>
-                    <h2> Tiene {{ persona.trayectos|length }} trayectos.</h2>
-                        {% for trayecto in persona.trayectos %}
-                                {% include 'list/_trayecto.html.twig' %}
-                        {% endfor %}
+                    <h3 class="text-left"> Trayecto: {{ trayecto }} </h3>
+                               {% include 'list/_trayecto.html.twig' %}
                     <a class="btn btn-primary" href="{{ path('public_list') }}"> Regresar al listado de Trayectos</a>
                 </div>
             </div>
